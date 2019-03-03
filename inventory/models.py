@@ -3,7 +3,8 @@ from django.db import models
 # Create your models here.
 from django.db import models
 
-from __future__ import unicode_literals
+
+from django.urls import reverse
 
 
 class Product(models.Model):
@@ -19,8 +20,8 @@ class Product(models.Model):
     quantity = models.FloatField(help_text="Enter Product Quantity")
     minQuantity = models.FloatField(help_text="Enter Product Min Quantity")
 
-    family = models.ForeignKey('Family')
-    location = models.ForeignKey('Location')
+    family = models.ForeignKey('Family', on_delete=models.CASCADE)
+    location = models.ForeignKey('Location', on_delete=models.CASCADE)
 
     def get_absolute_url(self):
         """
@@ -79,7 +80,7 @@ class Transaction(models.Model):
 
     quantity = models.FloatField(help_text="Enter Product Quantity")
 
-    product = models.ForeignKey('Product')
+    product = models.ForeignKey('Product',on_delete=models.CASCADE)
 
     date = models.DateField(null=True, blank=True)
 

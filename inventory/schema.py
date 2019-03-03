@@ -39,18 +39,49 @@ class Query(graphene.AbstractType):
     product = graphene.Field(ProductType, id=graphene.Int())
 
     def resolve_all_families(self, args, context, info):
+        """
+        :param args:
+        :param context:
+        :param info:
+        :return:
+        """
         return Family.objects.all()
 
     def resolve_all_locations(self, args, context, info):
+        """
+        :param args:
+        :param context:
+        :param info:
+        :return:
+        """
         return Location.objects.all()
 
     def resolve_all_products(self, args, context, info):
+        """
+        :param args:
+        :param context:
+        :param info:
+        :return:
+        """
         return Product.objects.all()
 
     def resolve_all_transactions(self, args, context, info):
+        """
+        :param args:
+        :param context:
+        :param info:
+        :return:
+        """
         return Transaction.objects.all()
 
     def resolve_product(self, args, context, info):
+
+        """
+        :param args:
+        :param context:
+        :param info:
+        :return:
+        """
         id = args.get('id')
 
         if id is not None:
